@@ -7,10 +7,14 @@ import type { Retailers } from "@recipopdev/retailer-api-v2-shared"
 
 const router = express.Router()
 
-async function action(page: Page, request: Request) {
-	const retailerConfig: Retailers = request.body.retailer_config
+let currentConfig: Record<string, unknown>
 
-	const nameTag = <keyof typeof scripts>retailerConfig.nameTag
+async function action(page: Page, request: Request) {
+	currentConfig = currentConfig != undefined ? currentConfig : request.body.retailerConfig
+
+	const nameTag = <keyof typeof scripts>currentConfig.specialName
+	console.log("Scraping", nameTag)
+
 	const script = new scripts[nameTag]()
 
 	// TODO: move this to retailer script?
@@ -19,6 +23,8 @@ async function action(page: Page, request: Request) {
 
 	const html = await page.content()
 	const products = script.scrape(html, page)
+
+	// products = products.slice(0, 1)
 
 	return formScrapeResponse(page, true, request.body.waitOptions, products)
 }

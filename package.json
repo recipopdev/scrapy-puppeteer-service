@@ -3,7 +3,7 @@
   "version": "0.0.6",
   "private": true,
   "scripts": {
-    "start": "tsc && node ./dist/bin/www",
+	"start": "tsc-watch --noClear --onSuccess \"node ./dist/bin/www\"",
     "build": "tsc",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
@@ -29,6 +29,7 @@
     "@types/morgan": "^1.9.3",
     "@types/node": "^18.11.0",
     "eslint": "^8.25.0",
+    "tsc-watch": "^5.0.3",
     "typescript": "^4.8.4"
   }
 }

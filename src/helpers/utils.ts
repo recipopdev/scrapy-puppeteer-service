@@ -22,16 +22,17 @@ import type { Product } from "@recipopdev/retailer-api-v2-shared"
 // 	throw "Page not found"
 // }
 
-// export async function closeContexts(browser: ChromiumBrowser, contextIds: number[]) {
-// 	// TODO shared locks on contexts and exclusive on pages?
-// 	const close_promises = []
-// 	for (const context of browser.browserContexts()) {
-// 		if (contextIds.includes(context._id)) {
-// 			close_promises.push(context.close())
-// 		}
-// 	}
-// 	await Promise.all(close_promises)
-// }
+export async function closeContexts(browser: ChromiumBrowser, contextIds: number[]) {
+	// TODO shared locks on contexts and exclusive on pages?
+	// const close_promises = []
+	// for (const context of browser.browserContexts()) {
+	// 	if (contextIds.includes(context._id)) {
+	// 		close_promises.push(context.close())
+	// 	}
+	// }
+	// await Promise.all(close_promises)
+	// await browser.close()
+}
 
 // async function wait(page: Page, waitFor: any) {
 // 	if (waitFor instanceof Object) {

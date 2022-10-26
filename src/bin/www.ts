@@ -33,7 +33,7 @@ server.setTimeout(timeout > 0 ? timeout : 190000)
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port)
+server.listen(port, () => console.log("Server started"))
 server.on("error", onError)
 server.on("listening", onListening)
 
